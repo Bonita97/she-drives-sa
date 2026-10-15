@@ -1,0 +1,318 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SHE DRIVES</title>
+<style>
+:root{--bg:#fbf5f7;--surf:#fff;--ink:#2a1530;--mute:#6f5a78;--line:#ead9e2;--pri:#7a1f5c;--pri2:#f3dcec;--ok:#1f7a4d;--gold:#b8861b;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1a0f1e;--surf:#271830;--ink:#f6eaf3;--mute:#b79cc2;--line:#42284d;--pri:#e58bc6;--pri2:#3b1f45;--ok:#5fd596;--gold:#e6b84a}}
+:root[data-theme="dark"]{--bg:#1a0f1e;--surf:#271830;--ink:#f6eaf3;--mute:#b79cc2;--line:#42284d;--pri:#e58bc6;--pri2:#3b1f45;--ok:#5fd596;--gold:#e6b84a}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 Georgia,"Times New Roman",serif;max-width:560px;margin:0 auto;padding:0 16px 90px}
+h1,h2,h3,button,.sans{font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+h1{font-size:28px;margin:18px 0 2px;letter-spacing:-.5px}h2{font-size:18px;margin:22px 0 8px}h3{margin:0;font-size:17px}
+p{margin:4px 0}.mute{color:var(--mute);font-size:14px}
+.badge{display:inline-block;background:var(--ink);color:var(--bg);font:700 12px system-ui;padding:6px 10px;border-radius:6px;margin:6px 0}
+.wa{display:flex;align-items:center;justify-content:center;gap:8px;background:#1f9d55;color:#fff;text-decoration:none;font:600 15px system-ui;padding:12px;border-radius:10px;margin:10px 0}
+.card{background:var(--surf);border:1.5px solid var(--line);border-radius:14px;padding:16px;margin:10px 0}
+.card.big{border-color:var(--pri)}.card.star{border-width:2.5px}
+.tag{font:700 11px system-ui;background:var(--pri);color:var(--surf);padding:3px 8px;border-radius:99px;margin-left:6px;vertical-align:middle}
+.price{font:700 26px system-ui;color:var(--pri)}.price small{font-size:13px;color:var(--mute);font-weight:500}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px}
+button{font:600 15px system-ui;border:0;border-radius:10px;padding:11px 14px;cursor:pointer;background:var(--pri);color:var(--surf)}
+button.ghost{background:var(--pri2);color:var(--pri)}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+nav{position:fixed;bottom:0;left:0;right:0;background:var(--surf);border-top:1px solid var(--line);display:flex;justify-content:center;padding-bottom:env(safe-area-inset-bottom,0px)}
+nav div{display:flex;width:100%;max-width:560px;overflow-x:auto}nav button{flex:1 0 auto;background:none;color:var(--mute);border-radius:0;padding:14px 4px;font-size:13px}nav button.on{color:var(--pri);box-shadow:inset 0 3px var(--pri)}
+.split{font:13px system-ui;color:var(--mute);margin-top:6px}.split b{color:var(--ink)}
+table{width:100%;border-collapse:collapse;font:14px system-ui}td,th{padding:8px 4px;border-bottom:1px solid var(--line);text-align:left}td:last-child,th:last-child{text-align:right}
+input,select{width:100%;font:16px system-ui;padding:11px;border:1.5px solid var(--line);border-radius:10px;background:var(--surf);color:var(--ink);margin:4px 0 10px}
+.modal{position:fixed;inset:0;background:rgba(20,5,25,.6);display:none;align-items:flex-end;justify-content:center;z-index:9}.modal.on{display:flex}
+.sheet{background:var(--surf);width:100%;max-width:560px;border-radius:18px 18px 0 0;padding:20px 16px calc(20px + env(safe-area-inset-bottom,0px))}
+.clause{border-left:4px solid var(--pri);padding:8px 12px;background:var(--pri2);border-radius:0 8px 8px 0;font-size:14px}
+.sig{border:1.5px dashed var(--mute);border-radius:10px;width:100%;height:110px;touch-action:none;background:var(--surf)}
+.note{font:13px system-ui;color:var(--mute);background:var(--pri2);padding:10px;border-radius:8px;margin:12px 0}
+.ok{color:var(--ok);font-weight:700}
+#sos{position:fixed;right:14px;bottom:calc(78px + env(safe-area-inset-bottom,0px));width:68px;height:68px;border-radius:50%;background:#d00;color:#fff;font:800 18px system-ui;border:3px solid #fff;display:none;align-items:center;justify-content:center;z-index:8;touch-action:none;user-select:none;-webkit-user-select:none;padding:0}
+#sos.hold{animation:sosf 3s linear}@keyframes sosf{from{box-shadow:0 0 0 0 rgba(220,0,0,.6)}to{box-shadow:0 0 0 28px rgba(220,0,0,0)}}
+.flash{background:#d00;color:#fff;border-radius:10px;padding:12px;font:700 15px system-ui;animation:fl 1s steps(2) infinite}@keyframes fl{50%{background:#7a0000}}
+@media (prefers-reduced-motion:reduce){.flash{animation:none}}
+</style>
+</head>
+<body>
+<h1>SHE DRIVES</h1>
+<p class="mute">Women drivers for women riders. Safe, scheduled, and trusted.</p>
+<span class="badge">CARD ONLY • NO CASH — Paystack</span>
+<a class="wa" href="https://wa.me/270661038817">WhatsApp support 066 103 8817</a>
+<main id="app"></main>
+
+<div class="modal" id="modal"><div class="sheet" id="sheet"></div></div>
+<nav><div id="nav"></div></nav>
+
+<script>
+const PAYMENT_POLICY={method:"CARD ONLY NO CASH",gateway:"Paystack",cash_allowed:false,channels:["card"]};
+// Prices in rand; Paystack amounts are in cents (x100)
+const PACKAGES=[
+{id:"work",name:"Work monthly",price:2700,driver:2160,you:540,main:1,desc:"Mon–Fri to work and back. Same sister driver every day."},
+{id:"allday",name:"All day service",price:1500,driver:1200,you:300,main:1,star:1,desc:"Included: unlimited grocery, errands, clinic, salon. 8am–6pm Mon–Sun. Fair use: 2 trips/day, 15km max per trip, then R5/km."},
+{id:"combo",name:"Combo",price:3800,driver:3040,you:760,main:1,best:1,desc:"Work + All Day. Normally R4200, you save R400."},
+{id:"school",name:"School",price:1200,driver:960,you:240,unit:"/kid/month",desc:"Safe school runs for each child."},
+{id:"grocery",name:"Grocery trip",price:200,driver:160,you:40,unit:"/trip",desc:"Return trip, 1 hour wait, bags carried to your door."},
+{id:"club",name:"Clubbing night",price:600,driver:480,you:120,unit:"/night",desc:"Home → club → driver waits all night → home. 7pm–4am."}];
+const PERKM=[
+{n:"Work per trip",base:0,km:8,d:"R6.40/km",y:"R1.60/km",note:"If not on monthly"},
+{n:"Late night",base:80,km:6,d:"R64 + R4.80/km",y:"R16 + R1.20/km"},
+{n:"Day ride",base:50,km:5,d:"R40 + R4/km",y:"R10 + R1/km"}];
+PACKAGES.forEach(p=>p.paystack={amount:p.price*100,split:{driver:p.driver*100,platform:p.you*100}});
+const R=n=>"R"+n.toLocaleString("en-ZA");
+const state={tab:"home",sales:{work:3,allday:8,combo:2,school:4,grocery:12,club:5},sub:null,signed:false,mult:1};
+const tabs=[["home","Home"],["trip","Per trip"],["contract","Contract"],["driver","Driver"],["owner","Owner"]];
+const $=s=>document.querySelector(s);
+
+function pkgCard(p){return `<div class="card ${p.main?'big':''} ${p.star?'star':''}">
+<div class="row"><h3>${p.name}${p.star?'<span class="tag">MOST POPULAR</span>':''}${p.best?'<span class="tag">BEST VALUE</span>':''}</h3></div>
+<div class="price">${R(p.price)} <small>${p.unit||"/month"}</small></div>
+<p class="mute">${p.desc}</p>
+<div class="split">Driver <b>${R(p.driver)}</b> (80%) · Platform <b>${R(p.you)}</b> (20%)</div>
+<div class="row" style="margin-top:10px"><span class="mute">Card only</span><button onclick="checkout('${p.id}')">Pay by card</button></div></div>`}
+
+function render(){
+ const t=state.tab,a=$("#app");
+ $("#nav").innerHTML=tabs.map(([k,l])=>`<button class="${t===k?'on':''}" onclick="go('${k}')">${l}</button>`).join("");
+ if(t==="home"){
+  a.innerHTML=`<h2>Choose your package</h2>${PACKAGES.filter(p=>p.main).map(pkgCard).join("")}
+  <h2>Pay as you go</h2>${PACKAGES.filter(p=>!p.main).map(pkgCard).join("")}
+  ${state.sub?`<div class="note ok">Active: ${state.sub}. Sign your contract in the Contract tab.</div>`:""}`;
+ }
+ if(t==="trip"){
+  a.innerHTML=`<h2>Trip price estimator</h2><p class="mute">GPS distance is calculated in the live app. Enter km here.</p>
+  <div class="card"><label class="sans mute">Trip type</label><select id="tt">${PERKM.map((p,i)=>`<option value="${i}">${p.n}</option>`).join("")}</select>
+  <label class="sans mute">Distance (km)</label><input id="km" type="number" min="1" value="10" inputmode="decimal">
+  <div class="price" id="est"></div><div class="split" id="estsplit"></div>
+  <button style="margin-top:10px;width:100%" onclick="payTrip()">Pay by card</button></div>
+  <p class="mute">Card only. No cash accepted, for rider and driver safety.</p>`;
+  ["tt","km"].forEach(i=>$("#"+i).oninput=est);est();
+ }
+ if(t==="contract"){
+  const pk=state.sub||"No package selected";
+  a.innerHTML=`<h2>Rider contract</h2><div class="card"><p><b>Package:</b> ${pk}</p>
+  <p class="mute">All Day fair use: 2 trips/day, 15km max, 8am–6pm.</p>
+  <div class="clause sans"><b>PAYMENT POLICY: CARD ONLY • NO CASH.</b> All payments go through Paystack secure card payments. No cash is accepted, for rider and driver safety. The driver never handles cash. Earnings are auto-paid by Paystack to the driver's subaccount within 24 hours. Channels: card only.</div>
+  <p class="mute" style="margin-top:10px">Support: WhatsApp 066 103 8817</p>
+  <label class="sans mute">Full name</label><input id="nm" autocomplete="name">
+  <label class="sans mute">Sign below</label><canvas class="sig" id="sig"></canvas>
+  <div class="row"><button class="ghost" onclick="clearSig()">Clear</button><button onclick="signIt()">Sign contract</button></div>
+  ${state.signed?'<p class="ok sans">Contract signed.</p>':''}</div>`;
+  initSig();
+ }
+ if(t==="driver"){
+  const rows=PACKAGES.map(p=>[p,state.sales[p.id]||0]);
+  const tot=rows.reduce((s,[p,c])=>s+p.driver*c,0);
+  a.innerHTML=`<h2>Driver earnings</h2><div class="note">Auto-paid by Paystack. No cash to collect. Card only.</div>
+  <div class="card"><div class="mute sans">Sample month earnings</div><div class="price">${R(tot)}</div>
+  <table><tr><th>Package</th><th>Rides</th><th>You earn</th></tr>${rows.map(([p,c])=>`<tr><td>${p.name}</td><td>${c}</td><td>${R(p.driver*c)}</td></tr>`).join("")}</table></div>`;
+ }
+ if(t==="owner"){
+  const rows=PACKAGES.map(p=>[p,state.sales[p.id]||0]);
+  const tot=rows.reduce((s,[p,c])=>s+p.you*c,0);
+  a.innerHTML=`<h2>Owner dashboard</h2><div class="note">CARD ONLY policy: every payment is split 80/20 by Paystack automatically.</div>
+  <div class="card"><div class="mute sans">Profit across ${state.mult} province${state.mult>1?'s':''}</div><div class="price">${R(tot*state.mult)}</div>
+  <label class="sans mute">Provinces (1–9 multiplier)</label><select onchange="state.mult=+this.value;render()">${[1,2,3,4,5,6,7,8,9].map(n=>`<option ${n===state.mult?'selected':''}>${n}</option>`).join("")}</select>
+  <table><tr><th>Package (you earn)</th><th>Sold</th><th>Income</th></tr>${rows.map(([p,c])=>`<tr><td>${p.name} ${R(p.you)}</td><td><input style="width:60px;margin:0;padding:4px" type="number" min="0" value="${c}" onchange="state.sales['${p.id}']=+this.value;render()"></td><td>${R(p.you*c)}</td></tr>`).join("")}</table></div>`;
+ }
+}
+function go(t){state.tab=t;render();scrollTo(0,0)}
+function est(){const p=PERKM[+$("#tt").value],km=Math.max(0,+$("#km").value||0);const tot=p.base+p.km*km;
+ $("#est").textContent=R(Math.round(tot*100)/100);
+ $("#estsplit").innerHTML=`Driver <b>${R(Math.round(tot*80)/100)}</b> · Platform <b>${R(Math.round(tot*20)/100)}</b>`}
+function payTrip(){const p=PERKM[+$("#tt").value];const tot=p.base+p.km*(+$("#km").value||0);
+ checkout(null,{name:p.n,price:tot})}
+
+// Demo checkout. In your own site, replace the body with PaystackPop (see handoff note below).
+function checkout(id,custom){
+ const p=custom||PACKAGES.find(x=>x.id===id);
+ $("#sheet").innerHTML=`<h3>${p.name}</h3><div class="price">${R(p.price)}</div>
+ <span class="badge">CARD ONLY • NO CASH — Paystack</span>
+ <label class="sans mute">Email</label><input id="em" type="email" placeholder="you@email.com" autocomplete="email">
+ <button style="width:100%" onclick="payWithPaystack('${id||''}',${p.price})">Pay ${R(p.price)} by card</button>
+ <button class="ghost" style="width:100%;margin-top:8px" onclick="closeM()">Cancel</button>
+ <div class="note">Demo mode: no real payment is taken. Cash options are removed everywhere.</div>`;
+ $("#modal").classList.add("on");
+}
+function payWithPaystack(id,price){
+ const email=$("#em").value;if(!/\S+@\S+\.\S+/.test(email)){$("#em").focus();$("#em").style.borderColor="red";return}
+ /* Live version (host on your own domain, add <script src="https://js.paystack.co/v2/inline.js">):
+ new PaystackPop().newTransaction({key:'pk_live_YOUR_KEY',email,amount:pkg.paystack.amount,currency:'ZAR',
+  channels:['card'],subaccount:'ACCT_DRIVER_SUBACCOUNT_ID',transaction_charge:pkg.paystack.split.platform,bearer:'subaccount',
+  metadata:{custom_fields:[{display_name:"Payment Policy",value:"CARD ONLY NO CASH"}]},
+  onSuccess:r=>verifyTransaction(r.reference,id), onCancel:()=>alert('Payment cancelled. Card only, no cash')}); */
+ const p=PACKAGES.find(x=>x.id===id);
+ if(p&&p.main)state.sub=p.name;
+ $("#sheet").innerHTML=`<h3 class="ok">Payment simulated</h3><p>Card payment of ${R(price)} recorded for ${email}.</p><button style="width:100%" onclick="closeM();go(${p&&p.main?"'contract'":"'home'"})">Continue</button>`;
+}
+function closeM(){$("#modal").classList.remove("on")}
+$("#modal").onclick=e=>{if(e.target.id==="modal")closeM()};
+
+let cv,cx,dr=false,inked=false;
+function initSig(){cv=$("#sig");const r=cv.getBoundingClientRect();cv.width=r.width;cv.height=r.height;cx=cv.getContext("2d");
+ cx.lineWidth=2;cx.lineCap="round";cx.strokeStyle=getComputedStyle(document.body).color;inked=false;
+ const pos=e=>{const b=cv.getBoundingClientRect();return[e.clientX-b.left,e.clientY-b.top]};
+ cv.onpointerdown=e=>{dr=true;cx.beginPath();cx.moveTo(...pos(e))};
+ cv.onpointermove=e=>{if(!dr)return;cx.lineTo(...pos(e));cx.stroke();inked=true};
+ cv.onpointerup=()=>dr=false}
+function clearSig(){cx.clearRect(0,0,cv.width,cv.height);inked=false}
+function signIt(){if(!$("#nm").value.trim()||!inked){alert("Enter your name and sign in the box.");return}state.signed=true;render()}
+render();
+</script>
+<script>
+const PV=[["Gauteng",40],["Western Cape",15],["KwaZulu-Natal",15],["Eastern Cape",8],["Free State",5],["Limpopo",6],["Mpumalanga",5],["North West",4],["Northern Cape",2]];
+const SL={work:[1,4,14],allday:[3,12,46],combo:[1,3,11],school:[2,9,31],grocery:[6,30,118],club:[2,8,27]};
+const DRV=[{n:"Thandi M.",a:"Soweto",p:"Gauteng",s:"approved",e:9840},{n:"Lerato K.",a:"Sandton",p:"Gauteng",s:"approved",e:8200},{n:"Zanele D.",a:"Durban North",p:"KwaZulu-Natal",s:"approved",e:7360},{n:"Aisha P.",a:"Cape Town",p:"Western Cape",s:"pending",e:0},{n:"Naledi S.",a:"Mangaung",p:"Free State",s:"blocked",e:1200}];
+const MAM=[{n:"Mama Nomsa",a:"Soweto",p:"Gauteng",k:"allday",t:1,km:9},{n:"Mama Dineo",a:"Soweto",p:"Gauteng",k:"work",t:0,km:0},{n:"Mrs Naidoo",a:"Durban North",p:"KwaZulu-Natal",k:"combo",t:2,km:14},{n:"Mama Palesa",a:"Sandton",p:"Gauteng",k:"school",t:1,km:6},{n:"Ms Jacobs",a:"Cape Town",p:"Western Cape",k:"grocery",t:1,km:5}];
+const TX=[["SD-1042","allday","Mama Nomsa"],["SD-1043","combo","Mrs Naidoo"],["SD-1044","club","Ms Jacobs"],["SD-1045","school","Mama Palesa"],["SD-1046","work","Mama Dineo"]].map(([r,k,c])=>({r,k,c,refunded:0}));
+const RL=[["super","Super Admin","/admin","admin@shedrives.co.za","email"],["province","Province Admin","/province-admin","gauteng@shedrives.co.za","email"],["driver","Driver","/driver","066 111 0001","phone"],["client","Client / Mama","/client","066 222 0002","phone"],["parent","Parent (School)","/parent","066 333 0003","phone"],["finance","Finance (view only)","/finance","finance@shedrives.co.za","email"]];
+const OV=["ov","Overview"],DR=["dr","Drivers"],CL=["cl","Mamas"],PX=["px","Paystack"];
+const RT={super:[OV,DR,CL,PX,["rd","Rides"],["ct","Contracts"],["st","Settings"]],province:[OV,DR,CL],finance:[OV,PX],driver:[["mine","My rides"],["earn","Earnings"]],client:[["book","Book"],["track","My plan"]],parent:[["kid","School ride"]]};
+const RN={super:"SHE DRIVES Super Admin",province:"Province Admin",finance:"Finance (view only)",driver:"Driver",client:"My rides",parent:"Parent"};
+state.wa="066 103 8817";state.prov="All";state.role=null;state.lg=null;
+const PK=id=>PACKAGES.find(p=>p.id===id);
+const PS=n=>PV.find(x=>x[0]===n)[1];
+const sh=()=>state.role==="province"?PS(state.scope):(state.prov==="All"?100:PS(state.prov));
+const prof=(i,s)=>Math.round(PACKAGES.reduce((t,p)=>t+p.you*SL[p.id][i],0)*s/100);
+const vis=x=>state.role==="province"?x.p===state.scope:(state.prov==="All"||x.p===state.prov);
+const provSel=()=>state.role==="province"?`<p class="mute">Province: ${state.scope}</p>`:`<select onchange="state.prov=this.value;render()">${["All",...PV.map(x=>x[0])].map(n=>`<option ${n===state.prov?"selected":""}>${n}</option>`).join("")}</select>`;
+const V={
+ov:()=>{const s=sh();return provSel()+`<div class="row" style="gap:8px">${["Today","Week","Month"].map((l,i)=>`<div class="card" style="flex:1;text-align:center;padding:10px"><div class="mute sans">${l}</div><b class="sans">${R(prof(i,s))}</b></div>`).join("")}</div><h2>Profit by package (month)</h2><table><tr><th>Package</th><th>Each</th><th>Sold</th><th>Profit</th></tr>${PACKAGES.map(p=>`<tr><td>${p.name}</td><td>${R(p.you)}</td><td>${Math.round(SL[p.id][2]*s/100)}</td><td>${R(Math.round(p.you*SL[p.id][2]*s/100))}</td></tr>`).join("")}</table>${state.role==="province"?"":`<h2>Profit per province (month)</h2><table>${PV.map(([n,w])=>`<tr><td>${n}</td><td>${R(prof(2,w))}</td></tr>`).join("")}</table>`}<div class="note">Card only collections: all via Paystack. No cash.</div>`},
+dr:()=>provSel()+DRV.filter(vis).map((d,i)=>`<div class="card"><div class="row"><h3>${d.n}</h3><span class="tag" style="margin:0">${d.s}</span></div><p class="mute">${d.a}, ${d.p}</p><p class="sans">Earned (80%): <b>${R(d.e)}</b>, auto-paid by Paystack</p><p class="mute" id="lv${i}"></p><div class="row"><button class="ghost" onclick="trk(${i})">Track live</button>${state.role==="super"?`<button onclick="setDs('${d.n}','approved')">Approve</button><button class="ghost" onclick="setDs('${d.n}','blocked')">Block</button>`:""}</div></div>`).join("")+`<p class="mute">Driver login: phone + OTP. Drivers see only their own rides and earnings.</p>`,
+cl:()=>provSel()+MAM.filter(vis).map(m=>{const k=PK(m.k);return `<div class="card"><h3>${m.n}</h3><p class="mute">${m.a}, ${m.p}</p><p class="sans">${k.name} · <span class="ok">Card paid via Paystack</span></p>${m.k==="allday"||m.k==="combo"?`<div class="sans mute">Fair use today: ${m.t}/2 trips, ${m.km}/15 km</div><div style="height:8px;background:var(--pri2);border-radius:4px"><div style="height:8px;width:${m.t/2*100}%;background:var(--pri);border-radius:4px"></div></div>`:""}</div>`}).join(""),
+px:()=>`<div class="note">Channel: card only. Auto split 80/20 to the driver subaccount. Bearer: subaccount. No cash handling.</div><table><tr><th>Ref</th><th>Package</th><th>Paid</th><th>Driver 80%</th></tr>${TX.map(t=>{const p=PK(t.k);return `<tr><td>${t.r}</td><td>${p.name}</td><td>${t.refunded?"Refunded":R(p.price)}</td><td>${R(p.driver)}</td></tr>${state.role==="super"&&!t.refunded?`<tr><td colspan="4"><button class="ghost" onclick="refund('${t.r}')">Refund ${t.c} (card)</button></td></tr>`:""}`}).join("")}</table>`,
+rd:()=>`<h2>Live rides</h2><div class="card"><b>Thandi M.</b> · Mama Nomsa · All Day<p class="mute">GPS: Orlando West to clinic, 6 min away</p></div><div class="card"><b>Zanele D.</b> · Mrs Naidoo · Combo<p class="mute">GPS: Durban North, heading to work</p></div><h2>History by package (month)</h2><table>${PACKAGES.map(p=>`<tr><td>${p.name}</td><td>${SL[p.id][2]} rides</td></tr>`).join("")}</table>`,
+ct:()=>`<h2>Driver contracts</h2>${DRV.map(d=>`<p class="sans">${d.s==="pending"?"Pending":"Signed"} · ${d.n} · CARD ONLY clause</p>`).join("")}<h2>Parent contracts</h2>${MAM.map(m=>`<p class="sans">Signed · ${m.n} · e-signature + ID</p>`).join("")}<label class="sans mute">Upload ID (demo, not stored)</label><input type="file" accept="image/*,.pdf" onchange="this.nextElementSibling.textContent=this.files[0]?this.files[0].name:''"><p class="ok sans"></p>`,
+st:()=>`<label class="sans mute">WhatsApp number</label><input id="wan" value="${state.wa}"><button onclick="setWa()">Save number</button><h2>Prices (final, locked)</h2><table>${PACKAGES.map(p=>`<tr><td>${p.name}</td><td>${R(p.price)}</td></tr>`).join("")}</table><h2>Payment policy</h2><label class="sans"><input type="checkbox" checked disabled style="width:auto"> CARD ONLY: locked ON, cash cannot be enabled</label><h2>Email templates</h2><p class="mute">Sent when a contract is signed: welcome to the client (PDF attached) and a notice to admin@shedrives.co.za.</p><div class="row"><button class="ghost" onclick="pvw(1,'pv')">Client welcome</button><button class="ghost" onclick="pvw(2,'pv')">Admin notice</button></div><div id="pv"></div><div class="note">Preview only. Sending real email needs an email service on your server.</div><h2>Paystack keys</h2><div class="note">Keys live on your server, never in a web page. Public key: pk_live_••••••••. Secret key: stored server-side only.</div>`,
+mine:()=>`<div class="note ok">Card Only — Paystack auto-pays you. No cash to collect.</div>`+[["Mama Nomsa","allday","Home to clinic"],["Mama Dineo","work","Work run"]].map(([n,k,t])=>`<div class="card"><h3>${n}</h3><p class="mute">${t} · ${PK(k).name}</p><p class="sans">Your share: <b>${R(PK(k).driver)}</b> (80%)</p></div>`).join("")+`<p class="mute">You only see your own rides.</p>`,
+earn:()=>`<div class="card"><div class="mute sans">This month, auto-paid by Paystack</div><div class="price">${R(DRV[0].e)}</div></div><table><tr><th>Package</th><th>You earn</th></tr>${PACKAGES.map(p=>`<tr><td>${p.name}</td><td>${R(p.driver)}</td></tr>`).join("")}</table><p class="mute">Card only. No cash to collect.</p>`,
+book:()=>`<h2>Book and pay by card</h2>${PACKAGES.map(p=>`<div class="card row"><span class="sans">${p.name}<br><b>${R(p.price)}</b></span><button onclick="checkout('${p.id}')">Pay by card</button></div>`).join("")}`,
+track:()=>`<div class="card star"><h3>All Day plan</h3><p class="sans">Trips today: 1 of 2</p><div style="height:8px;background:var(--pri2);border-radius:4px"><div style="height:8px;width:50%;background:var(--pri);border-radius:4px"></div></div><p class="sans">Distance on last trip: 9 of 15 km</p><p class="mute">Over 15 km adds R5 per km. Paid by card only.</p></div>`,
+kid:()=>`<div class="card"><h3>School ride, live</h3><p class="sans"><span class="ok">Picked up</span> → <span class="ok">On the way</span> → At school → Home</p><p class="mute">Driver Lerato K. · arrives at school in 8 min · R1200 per month, card paid</p></div>`};
+function trk(i){document.getElementById("lv"+i).textContent="Live: moving, GPS updated just now"}
+function setDs(n,s){DRV.find(x=>x.n===n).s=s;render()}
+function refund(r){TX.find(t=>t.r===r).refunded=1;render()}
+function setWa(){state.wa=$("#wan").value;const a=document.querySelector(".wa");a.textContent="WhatsApp support "+state.wa;a.href="https://wa.me/"+state.wa.replace(/\D/g,"").replace(/^0/,"27");alert("WhatsApp number updated")}
+function logout(){state.role=null;state.tab="home";state.lg=null;render()}
+function doLogin(){if($("#lcd").value!=="1234"){$("#lcd").style.borderColor="red";return}state.role=state.lg;state.scope="Gauteng";state.prov="All";state.pt=null;render();scrollTo(0,0)}
+function portal(){const T=RT[state.role];if(!T.some(t=>t[0]===state.pt))state.pt=T[0][0];
+$("#nav").innerHTML=T.map(([k,l])=>`<button class="${state.pt===k?'on':''}" onclick="state.pt='${k}';render()">${l}</button>`).join("");
+$("#app").innerHTML=`<div class="row"><h2>${RN[state.role]}</h2><button class="ghost" onclick="logout()">Log out</button></div>`+V[state.pt]()}
+function loginView(){const sel=state.lg;$("#app").innerHTML=`<h2>Sign in</h2>`+RL.map(r=>`<div class="card ${sel===r[0]?'big':''}"><div class="row"><div><h3>${r[1]}</h3><span class="mute sans">${r[2]}</span></div><button class="ghost" onclick="state.lg='${r[0]}';render()">Choose</button></div>${sel===r[0]?`<label class="sans mute">${r[4]==="email"?"Email":"Phone number"}</label><input id="lid" value="${r[3]}"><label class="sans mute">${r[4]==="email"?"One-time code":"OTP"}</label><input id="lcd" inputmode="numeric" placeholder="Demo code: 1234"><button style="width:100%" onclick="doLogin()">Sign in</button>`:""}</div>`).join("")+`<div class="note">Demo only: any login above works with code 1234. A live app must verify phone OTP and admin sign-in on a server.</div>`}
+const _r=render;
+render=function(){if(state.role)return portal();_r();if(state.tab==="login")loginView()};
+const T1=`<!DOCTYPE html>
+<html>
+<body style="font-family:Arial,sans-serif;background:#f5f5f5;padding:20px">
+<div style="max-width:600px;margin:auto;background:white;border-top:5px solid #C2185B">
+<div style="background:#C2185B;color:white;padding:20px">
+<h2>SHE DRIVES - Women Driving Women</h2>
+<p>WhatsApp: 066 103 8817 | CARD ONLY • NO CASH</p>
+</div>
+<div style="padding:20px">
+<p>Hi {{client_name}},</p>
+<p>Welcome to <b>SHE DRIVES</b>! Your contract is signed and attached as PDF.</p>
+<p><b>Package: {{package_name}} - {{package_price}} - CARD ONLY NO CASH</b></p>
+<ul>
+<li>Work R2700/month Mon-Fri work & back</li>
+<li>All Day R1500/month MOST POPULAR Unlimited grocery+errands+clinic+salon 8am-6pm 2 trips/day max 15km max over 15km +R5/KM</li>
+<li>Combo R3800/month Save R400 BEST VALUE</li>
+<li>School R1200/kid, Grocery R200/trip, Clubbing R600/night All Night Wait</li>
+</ul>
+<p><b>PAYMENT POLICY: CARD ONLY NO CASH</b> - All via Paystack secure card channels: ['card'] only. Drivers never handle cash for safety. Support 066 103 8817.</p>
+<p><b>What happens next?</b><br>
+1. Your driver sister will WhatsApp you within 2 hours<br>
+2. Track ride in App /app<br>
+3. All receipts via Paystack to this email</p>
+<p>Your signed contract PDF is attached. Keep it safe.</p>
+<p>Safe, Tracked, Women Only - Built for Women By Women<br>
+WhatsApp: 066 103 8817 | admin@shedrives.co.za<br>
+<b>CARD ONLY - No Cash Accepted - Paystack Secure</b></p>
+</div>
+</div>
+</body>
+</html>`;
+const T2=`<!DOCTYPE html>
+<html>
+<body style="font-family:Arial;background:#f5f5f5;padding:20px">
+<div style="max-width:600px;margin:auto;background:white;border-top:5px solid #C2185B">
+<div style="background:#C2185B;color:white;padding:15px">
+<h3>New Contract Signed! - SHE DRIVES</h3>
+</div>
+<div style="padding:20px">
+<p><b>Client:</b> {{client_name}}<br>
+<b>ID:</b> {{id_number}}<br>
+<b>Phone:</b> {{phone}}<br>
+<b>Email:</b> {{client_email}}<br>
+<b>Package:</b> {{package_name}} - {{package_price}}<br>
+<b>Paystack Ref:</b> {{paystack_ref}}<br>
+<b>Date:</b> {{date}}<br>
+<b>WhatsApp:</b> 066 103 8817</p>
+<p><b>Breakdown:</b><br>
+- Work R2700 Driver R2160 You R540<br>
+- All Day R1500 Driver R1200 You R300 MOST POPULAR<br>
+- Combo R3800 Driver R3040 You R760<br>
+- School R1200 Driver R960 You R240<br>
+- Grocery R200 Driver R160 You R40<br>
+- Clubbing R600 Driver R480 You R120</p>
+<p><b>Payment:</b> CARD ONLY NO CASH - Paystack channels card only - Amount {{amount}} split 80/20 to driver subaccount</p>
+<p>PDF attached. Stored in /admin/contracts<br>
+Action: Assign driver sister & contact via WhatsApp 066 103 8817</p>
+</div>
+</div>
+</body>
+</html>`;
+const fillT=(t,d)=>t.replace(/\{\{(\w+)\}\}/g,(m,k)=>d[k]!==undefined?d[k]:m);
+function mailData(){const pn=(state.sub||"All day service").toLowerCase();const p=PACKAGES.find(x=>x.name.toLowerCase()===pn)||PACKAGES[1];
+return{client_name:state.cn||"Mama Nomsa",package_name:p.name,package_price:R(p.price)+(p.unit||"/month"),id_number:"On file (ID upload)",phone:"066 222 0002",client_email:"mama@example.com",paystack_ref:"SD-"+(1047+Math.floor(Math.random()*50)),date:new Date().toLocaleDateString("en-ZA"),amount:R(p.price)}}
+function pvw(n,id){const f=document.createElement("iframe");f.setAttribute("sandbox","");f.style.cssText="width:100%;height:440px;border:1px solid var(--line);background:#fff;margin-top:10px";f.srcdoc=fillT(n===1?T1:T2,mailData());const h=document.getElementById(id);h.innerHTML="";h.appendChild(f)}
+const _sg=signIt;
+signIt=function(){const n=($("#nm")||{}).value||"";if(!n.trim()||!inked){_sg();return}_sg();state.cn=n;
+$("#sheet").style.cssText="max-height:85vh;overflow:auto";
+$("#sheet").innerHTML=`<h3 class="ok">Contract signed</h3><p class="mute">Two emails are queued (demo, not sent): a welcome to you with the PDF, and a notice to admin.</p><div class="row"><button class="ghost" onclick="pvw(1,'pv2')">Welcome email</button><button class="ghost" onclick="pvw(2,'pv2')">Admin notice</button></div><div id="pv2"></div><button style="width:100%;margin-top:10px" onclick="closeM()">Done</button>`;$("#modal").classList.add("on")};
+const DISC="SOS shares location with contacts & admin. It does not auto-dispatch police/ambulance. Tap to call 10111/112/084124. She Drives (Pty) Ltd monitors alerts.";
+const ALERTS=[],SOSR=["driver","client","parent"];state.med={};state.act=null;
+let ht=null,ac=null;
+const sb=document.createElement("button");sb.id="sos";sb.textContent="SOS";sb.setAttribute("aria-label","SOS. Hold for 3 seconds to send");document.body.appendChild(sb);
+sb.addEventListener("pointerdown",e=>{e.preventDefault();sb.classList.add("hold");if(navigator.vibrate)navigator.vibrate(50);ht=setTimeout(()=>{sb.classList.remove("hold");if(navigator.vibrate)navigator.vibrate([200,100,200]);sosConfirm()},3000)});
+["pointerup","pointerleave","pointercancel"].forEach(ev=>sb.addEventListener(ev,()=>{clearTimeout(ht);sb.classList.remove("hold")}));
+sb.oncontextmenu=e=>e.preventDefault();
+const esc=s=>(s||"").replace(/"/g,"&quot;").replace(/</g,"&lt;");
+const mapUrl=a=>a&&a.lat!=null?`https://maps.google.com/?q=${a.lat},${a.lng}`:"";
+function sosConfirm(){const m=$("#sheet");m.style.cssText="max-height:85vh;overflow:auto";m.innerHTML=`<h3 style="color:#d00">Send SOS?</h3><p>Choose the type. Your live location goes to SHE DRIVES admin, your emergency contact, and the parent on school trips.</p><button style="width:100%;background:#d00;margin:6px 0" onclick="sendSos('danger')">Send SOS: Danger</button><button style="width:100%;background:#d00;margin:6px 0" onclick="sendSos('health')">Send SOS: Health</button><button class="ghost" style="width:100%" onclick="closeM()">Cancel</button><p class="mute" style="margin-top:10px">${DISC}</p>`;$("#modal").classList.add("on")}
+function sendSos(type){const a={id:"SOS-"+Date.now(),userId:state.role+"-demo",tripId:state.role==="driver"?"TRIP-1042":"TRIP-1043",type,time:new Date().toLocaleTimeString("en-ZA"),lat:null,lng:null,ack:false,active:true,rec:"",audio:null,notified:["Push to admin","WhatsApp to admin 066 103 8817 (queued)","Emergency contact: "+(state.med.emergencyName||"not set"),"Parent (school trips)"]};
+// Live app: POST this object to /admin/alerts and trigger Push + WhatsApp API from your server
+ALERTS.unshift(a);state.act=a;
+if(navigator.geolocation){const ok=p=>{a.lat=+p.coords.latitude.toFixed(5);a.lng=+p.coords.longitude.toFixed(5);a.upd=new Date().toLocaleTimeString("en-ZA");refreshSos()},bad=()=>{a.gpsErr=1;refreshSos()},o={enableHighAccuracy:true,maximumAge:0};navigator.geolocation.getCurrentPosition(ok,bad,o);a.wid=navigator.geolocation.watchPosition(ok,bad,o)}else a.gpsErr=1;
+if(state.med.consent)startRec(a);else a.rec="Audio not recorded (no POPIA consent)";
+sosModal()}
+async function startRec(a){try{const st=await navigator.mediaDevices.getUserMedia({audio:true});const mr=new MediaRecorder(st),ch=[];mr.ondataavailable=e=>ch.push(e.data);mr.onstop=()=>{st.getTracks().forEach(t=>t.stop());a.audio=URL.createObjectURL(new Blob(ch,{type:"audio/webm"}));a.rec="Audio saved (demo upload to alerts)";refreshSos()};mr.start();a.rec="Recording audio (120s)...";refreshSos();setTimeout(()=>{if(mr.state!=="inactive")mr.stop()},120000)}catch(e){a.rec="Audio not available (permission denied)";refreshSos()}}
+function sosModal(){const a=state.act,ec=(state.med.emergencyPhone||"").replace(/[^0-9+]/g,""),b="class=\"wa\" style=\"background:#c00\"";
+$("#sheet").innerHTML=`<h3 style="color:#d00">SOS sent (demo)</h3><p class="sans" id="sosloc"></p><p class="mute sans" id="sosrec"></p><p class="mute sans">${a.notified.join(" · ")}</p><a ${b} href="tel:10111">Call 10111 SAPS</a><a ${b} href="tel:112">Call 112</a><a ${b} href="tel:0661038817">Call 066 103 8817</a>${ec?`<a ${b} href="tel:${ec}">Call emergency contact</a>`:`<p class="mute sans">Add an emergency contact in Profile to call them here.</p>`}<a class="wa" id="sosshare" href="#" target="_blank" rel="noopener">Share live location on WhatsApp</a><button class="ghost" style="width:100%" onclick="endSos()">I'm safe: stop sharing</button><p class="mute" style="margin-top:10px">${DISC}</p>`;refreshSos()}
+function refreshSos(){const a=state.act;if(!a||!$("#sosloc"))return;$("#sosloc").textContent=a.gpsErr?"Location unavailable (GPS off or blocked)":a.lat==null?"Getting GPS fix...":`Live location: ${a.lat}, ${a.lng} (updated ${a.upd})`;$("#sosrec").textContent=a.rec;$("#sosshare").href="https://wa.me/?text="+encodeURIComponent("SOS! I need help. "+(a.lat!=null?"My live location: "+mapUrl(a):"Location unavailable. Call me."))}
+function endSos(){const a=state.act;if(a&&a.wid!=null)navigator.geolocation.clearWatch(a.wid);if(a)a.active=false;closeM();render()}
+function ackA(id){ALERTS.find(a=>a.id===id).ack=true;render()}
+function beep(){try{ac=ac||new (window.AudioContext||window.webkitAudioContext)();if(ac.state==="suspended")ac.resume();const o=ac.createOscillator(),g=ac.createGain();o.connect(g);g.connect(ac.destination);o.frequency.value=880;g.gain.value=.15;o.start();o.stop(ac.currentTime+.4)}catch(e){}}
+setInterval(()=>{if((state.role==="super"||state.role==="province")&&ALERTS.some(a=>!a.ack))beep()},2000);
+function saveMed(){state.med={allergies:$("#m1").value,bloodType:$("#m2").value,chronicMeds:$("#m3").value,emergencyName:$("#m4").value,emergencyPhone:$("#m5").value,consent:$("#m6").checked};alert("Medical profile saved")}
+function acceptTrip(){const s=$("#gs");const no=()=>{s.textContent="GPS is off. Turn GPS on to accept trips. Trip assignment blocked.";s.className="note"};if(!navigator.geolocation){no();return}navigator.geolocation.getCurrentPosition(()=>{s.textContent="GPS is ON. Trip accepted.";s.className="note ok"},no,{enableHighAccuracy:true,timeout:8000})}
+const mp=()=>{const m=state.med;return `<h2>Medical profile</h2><div class="card"><label class="sans mute">Allergies</label><input id="m1" value="${esc(m.allergies)}"><label class="sans mute">Blood type</label><select id="m2">${["Unknown","A+","A-","B+","B-","AB+","AB-","O+","O-"].map(b=>`<option ${b===m.bloodType?"selected":""}>${b}</option>`).join("")}</select><label class="sans mute">Chronic medication</label><input id="m3" value="${esc(m.chronicMeds)}"><label class="sans mute">Emergency contact name</label><input id="m4" value="${esc(m.emergencyName)}"><label class="sans mute">Emergency contact phone</label><input id="m5" type="tel" value="${esc(m.emergencyPhone)}"><label class="sans" style="display:flex;gap:8px;align-items:flex-start"><input id="m6" type="checkbox" style="width:auto;margin-top:4px" ${m.consent?"checked":""}> I consent (POPIA) to my medical details and a 120-second audio recording being shared with SHE DRIVES and my emergency contact when I send an SOS.</label><button style="width:100%;margin-top:10px" onclick="saveMed()">Save</button></div>`};
+V.doc=mp;V.prof=mp;
+V.al=()=>`<h2>SOS alerts</h2>`+(ALERTS.length?ALERTS.map(a=>`<div class="card ${a.ack?"":"flash"}"><b class="sans">${a.type.toUpperCase()} · ${a.userId}</b><p class="sans">Trip ${a.tripId} · ${a.time}${a.active?" · LIVE":""}</p><p class="sans">${a.lat!=null?`${a.lat}, ${a.lng} <a href="${mapUrl(a)}" target="_blank" rel="noopener" style="color:inherit">Open map</a>`:"No GPS fix"}</p><p class="sans" style="font-size:13px">${a.notified.join(" · ")}</p><p class="sans">${a.rec}</p>${a.audio?`<audio controls src="${a.audio}" style="width:100%"></audio>`:""}${a.ack?`<span class="ok sans">Acknowledged</span>`:`<button style="background:#fff;color:#d00;width:100%" onclick="ackA('${a.id}')">Acknowledge</button>`}</div>`).join(""):`<p class="mute">No alerts. Alerts sound and flash until acknowledged.</p>`);
+const _mi=V.mine;V.mine=()=>_mi()+`<div class="card"><h3>Accept next trip</h3><p class="mute">GPS must be ON to accept trips.</p><button onclick="acceptTrip()">Accept trip</button><div id="gs" class="note" style="margin-top:10px">GPS not checked yet</div></div>`;
+const _kd=V.kid;V.kid=()=>{const a=ALERTS.find(x=>x.active);return (a?`<div class="flash" role="alert">SOS ${a.type.toUpperCase()} ACTIVE · ${a.time}<br>${a.lat!=null?`Live location ${a.lat}, ${a.lng} <a href="${mapUrl(a)}" target="_blank" rel="noopener" style="color:#fff">Open live map</a>`:"Waiting for GPS"}</div>`:"")+_kd()};
+RT.driver.push(["doc","Documents"]);RT.client.push(["prof","Profile"]);RT.parent.push(["prof","Profile"]);RT.super.splice(1,0,["al","Alerts"]);RT.province.splice(1,0,["al","Alerts"]);
+const _r2=render;
+render=function(){_r2();sb.style.display=SOSR.includes(state.role)?"flex":"none";const app=$("#app");
+if(SOSR.includes(state.role))app.insertAdjacentHTML("beforeend",`<p class="mute">${DISC}</p>`);
+if((state.role==="super"||state.role==="province")&&state.pt!=="al"){const n=ALERTS.filter(a=>!a.ack).length;if(n)app.insertAdjacentHTML("afterbegin",`<div class="flash" role="alert" onclick="state.pt='al';render()" style="cursor:pointer;margin-bottom:10px">SOS ALERT: ${n} not acknowledged. Tap to open.</div>`)}};
+tabs.push(["login","Sign in"]);render();
+</script>
+</body>
+</html>
